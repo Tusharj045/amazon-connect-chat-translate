@@ -153,7 +153,7 @@ const Ccp = () => {
                 contact.onConnecting(() => {
                     console.log("CDEBUG ===> onConnecting() >> contactId: ", contact.contactId);
                     let contactAttributes = contact.getAttributes();
-                    console.log("CDEBUG ===> contactAttributes: ", JSON.stringify(contactAttributes));
+                    console.log("CDEBUG ===> contactAttributes - locale: ", JSON.stringify(contactAttributes.locale));
                     let contactQueue = contact.getQueue();
                     console.log("CDEBUG ===> contactQueue: ", contactQueue);
                 });

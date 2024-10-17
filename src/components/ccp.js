@@ -120,7 +120,7 @@ const Ccp = () => {
         setLanguageTranslate(languageTranslate);
                 
         // Translate the customer message into English.
-        let translatedMessage = await translateText(content, webLang, toLanguage);
+        let translatedMessage = await translateText(content, textLang, toLanguage);
         console.log(`CDEBUG ===>  Original Message: ` + content + `\n Translated Message: ` + translatedMessage);
         // create the new message to add to Chats.
         let data2 = {
@@ -157,7 +157,7 @@ const Ccp = () => {
                     console.log("CDEBUG ===> contactAttributes - locale: ", JSON.stringify(contactAttributes));
                     const customerLanguageFromLocale = contactAttributes.locale.value.split("-")[0] || 'en';
                     setWebLang(customerLanguageFromLocale);
-                    console.log("CDEBUG ===> contactAttributes - customerLanguage: ", JSON.stringify(customerLanguageFromLocale));
+                    console.log("CDEBUG ===> contactAttributes - customerLanguage: ", customerLanguageFromLocale);
                     let contactQueue = contact.getQueue();
                     console.log("CDEBUG ===> contactQueue: ", contactQueue);
                 });

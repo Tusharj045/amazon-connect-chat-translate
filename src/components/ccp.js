@@ -123,7 +123,7 @@ const Ccp = () => {
         let translatedMessage = await translateText(content, textLang, toLanguage);
         let translatedMessage2 = await translateText(content, webLang, toLanguage);
         console.log(`CDEBUG ===>  Original Message: ` + content + `\n Translated Message: ` + translatedMessage);
-        console.log(`CDEBUG ===> ` + `\n Translated Message2: ` + translatedMessage2);
+        console.log(`CDEBUG ===> ` + `${webLang}-${textLang} Translated Message2: ` + translatedMessage2);
 
         // create the new message to add to Chats.
         let data2 = {

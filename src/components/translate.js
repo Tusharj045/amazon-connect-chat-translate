@@ -45,7 +45,7 @@ async function ProcessChatText(content, sourceLang, tagretLang) {
         }
     });
     const translatedMessage = await translateText(content, sourceLang, tagretLang)
-    console.log("TJ Translation: ", translatedMessage, transcriptMessage.text);
+    console.log("TJ Translation:", sourceLang, tagretLang, translatedMessage, transcriptMessage.text);
     return transcriptMessage.text
 }
 export default ProcessChatText

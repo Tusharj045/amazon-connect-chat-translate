@@ -14,6 +14,9 @@ exports.handler = (event, context, callback) => {
     TargetLanguageCode: payload.targetLang,
     /* required */
     Text: payload.content,
+    Settings: {
+        "Formality": "FORMAL"
+    }
     /* required */
     //TerminologyNames: payload.terminologyNames
   };

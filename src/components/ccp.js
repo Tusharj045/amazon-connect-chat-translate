@@ -121,9 +121,7 @@ const Ccp = () => {
                 
         // Translate the customer message into English.
         let translatedMessage = await translateText(content, textLang, toLanguage);
-        let translatedMessage2 = await translateText(content, webLang, toLanguage);
         console.log(`CDEBUG ===>  Original Message: ` + content + `\n Translated Message: ` + translatedMessage);
-        console.log(`CDEBUG ===> ` + `${webLang}-${textLang} Translated Message2: ` + translatedMessage2);
 
         // create the new message to add to Chats.
         let data2 = {
@@ -296,7 +294,7 @@ const Ccp = () => {
             {/* CCP window will load here */}
             <div id="ccp-container"></div>
             {/* Translate window will laod here. We pass the agent state to be able to use this to push messages to CCP */}
-            <div id="chatroom" ><Chatroom session={agentChatSessionState} toLanguage={toLanguage}/> </div> 
+            <div id="chatroom" ><Chatroom session={agentChatSessionState} toLanguage={toLanguage} webLang={webLang}/> </div> 
             </Grid.Row>
           </Grid>
         </main>

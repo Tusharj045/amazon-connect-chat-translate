@@ -4,34 +4,6 @@ import { getAmplifyUserAgentObject, Category, PredictionsAction, Signer } from '
 import { ConsoleLogger, Amplify, fetchAuthSession } from '@aws-amplify/core';
 
 
-const translateText = async (text, sourceLang, targetLang) => {
-
-
-    const { translateT = {} } = Amplify.getConfig().Predictions?.convert ?? {};
-    const { defaults = {}, region } = translateT;
-    const { credentials } = await fetchAuthSession();
-    console.log("TJ translateText", region);
-    const client = new TranslateClient({
-        region: 'eu-west-2',
-    });
-    const params = {
-        Text: text,
-        SourceLanguageCode: sourceLang,
-        TargetLanguageCode: targetLang,
-        Settings: {
-            Formality: "FORMAL",
-        },
-    };
-    try {
-        const command = new TranslateTextCommand(params);
-        const response = await client.send(command);
-        return response.TranslatedText;
-    } catch (error) {
-        console.error("Translation error: ", error);
-        // throw error;
-    }
-};
-
 async function ProcessChatText(content, sourceLang, tagretLang) {
 
     let transcriptMessage = await Predictions.convert({
@@ -44,8 +16,6 @@ async function ProcessChatText(content, sourceLang, tagretLang) {
             targetLanguage: tagretLang
         }
     });
-    const translatedMessage = await translateText(content, sourceLang, tagretLang)
-    console.log("TJ Translation:", sourceLang, tagretLang, translatedMessage, transcriptMessage.text);
     return transcriptMessage.text
 }
 export default ProcessChatText

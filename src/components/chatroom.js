@@ -57,7 +57,7 @@ const Chatroom = (props) => {
             return;
         }
         let destLang = languageTranslate.find(o => o.contactId === currentContactId[0]);
-        console.log("destLang: ", destLang);
+        console.log("destLang: ", destLang, props.webLang);
 
         // translate the agent message  ** Swap the below two round if you wnat to test custom termonologies **
         // let translatedMessage = await translateText(newMessage, 'en', destLang.lang);
@@ -72,7 +72,7 @@ const Chatroom = (props) => {
         //let translatedMessageAPI = await translateTextAPI(newMessage, 'en', destLang.lang, ['connectChatTranslate']); // Provide a custom terminology created outside of this deployment
         let translatedMessage = translatedMessageAPI.TranslatedText
 
-        console.log(` Original Message: ` + newMessage + 'Language: ' + props.toLanguage + `\n Translated Message: ` + translatedMessage);
+        console.log(` Original Message: ` + newMessage + 'Language: ' + props.toLanguage + " - " + props.webLang + `\n Translated Message: ` + translatedMessage);
         // create the new message to add to Chats.
         let data2 = {
             contactId: currentContactId[0],

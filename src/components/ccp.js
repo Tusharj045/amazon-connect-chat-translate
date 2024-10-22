@@ -4,6 +4,7 @@ import  { Amplify }  from 'aws-amplify';
 import awsconfig from '../aws-exports';
 import Chatroom from './chatroom';
 import translateText from './translate'
+import translateTextAPI from './translateAPI'
 import detectText from './detectText'
 import { addChat, setLanguageTranslate, clearChat, useGlobalState, setCurrentContactId } from '../store/state';
 
@@ -120,7 +121,10 @@ const Ccp = () => {
         setLanguageTranslate(languageTranslate);
                 
         // Translate the customer message into English.
-        let translatedMessage = await translateText(content, textLang, toLanguage);
+        // let translatedMessage = await translateText(content, textLang, toLanguage);
+        let translatedMessageAPI = await translateTextAPI(content, textLang, toLanguage); // Provide a custom terminology created outside of this deployment removed  [destLang.lang]
+        //let translatedMessageAPI = await translateTextAPI(newMessage, 'en', destLang.lang, ['connectChatTranslate']); // Provide a custom terminology created outside of this deployment
+        let translatedMessage = translatedMessageAPI.TranslatedText
         console.log(`CDEBUG ===>  Original Message: ` + content + `\n Translated Message: ` + translatedMessage);
 
         // create the new message to add to Chats.
